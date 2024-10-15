@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:dataGrid2D="http://gu.se/DataGrid2D"
+        xmlns:ScottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
+        mc:Ignorable="d"
+        Title="Розв'язання задачі прогнозування за допомогою методу найменших квадратів" Height="728" Width="800" SizeToContent="WidthAndHeight">
+    <Grid Height="728" Width="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="147*"/>
+            <RowDefinition Height="419*"/>
+        </Grid.RowDefinitions>
+        <DataGrid FontSize="20" SelectionUnit="Cell" AutoGenerateColumns="True"
+  HeadersVisibility="All" x:Name="squaresInput" Margin="10,10,650,418"
+        dataGrid2D:ItemsSource.Array2D="{Binding Data2D}"
+dataGrid2D:ItemsSource.ColumnHeadersSource="{Binding ColumnHeaders}"
+dataGrid2D:ItemsSource.RowHeadersSource="{Binding RowHeaders}"
+CanUserSortColumns="False" Grid.RowSpan="2">
+
+        </DataGrid>
+        <ScottPlot:WpfPlot  x:Name="WpfPlot1" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Height="433" Width="599" Grid.RowSpan="2"/>
+        <Button x:Name="solution_button" Click="solution_button_Click" Content="Розв'язати" FontSize="20" Margin="0,153,650,334" Grid.Row="1" HorizontalAlignment="Right" Width="140"></Button>
+        <Label x:Name="output" FontSize="30" Margin="0,263,0,162" Grid.Row="1"></Label>
+        <Button x:Name="add_input" FontSize="30" Click="add_input_Click" Margin="152,10,612,143">
+            <Button.Content>
+                <TextBlock Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="7,0,0,0" Height="49" Width="34">+</TextBlock>
+            </Button.Content>
+        </Button>
+        <Button x:Name="clear_input" Click="clear_input_Click" FontSize="30" Margin="152,46,612,103">
+            <Button.Content>
+                <TextBlock Background="Transparent" Padding="7,0,0,2" Height="36" Width="36">X</TextBlock>
+            </Button.Content>
+        </Button>
+        <Label x:Name="lineEquation" FontSize="30" Margin="0,377,0,102" Grid.Row="1"/>
+        <Label FontSize="30" Margin="10,449,724,33" Grid.Row="1">x=</Label>
+        <TextBox FontSize="30" x:Name="x_input" Grid.Row="1" Margin="60,455,673,41"></TextBox>
+        <Button Content="Обчислити" Grid.Row="1" Margin="139,455,588,41" Click="Button_Click"></Button>
+        <Label FontSize="30" x:Name="y_out" Margin="227,446,399,36" Grid.Row="1" Content="y="/>
+    </Grid>
+</Window>
